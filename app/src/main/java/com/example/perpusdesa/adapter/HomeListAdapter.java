@@ -57,7 +57,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
     public void onBindViewHolder(@NonNull MyViewHolder holder, @SuppressLint("RecyclerView") int position) {
         holder.tvTitle.setText(this.perpusList.get(position).getTitle().toString());
         holder.tvId.setText(this.perpusList.get(position).getId().toString());
-        //holder.tvDes.setText(this.perpusList.get(position).getDesciption().toString());
+        holder.tvAuthor.setText(this.perpusList.get(position).getAuthor().toString());
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,6 +68,8 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
                 intent.putExtra("img", perpusList.get(holder.getAdapterPosition()).getImage());
                 intent.putExtra("desc", perpusList.get(holder.getAdapterPosition()).getDesciption());
                 intent.putExtra("title", perpusList.get(holder.getAdapterPosition()).getTitle());
+                intent.putExtra("penulis",perpusList.get(holder.getAdapterPosition()).getAuthor());
+                intent.putExtra("category",perpusList.get(holder.getAdapterPosition()).getCategory());
                 context.startActivity(intent);
                 clickListener.onPerpusClick(perpusList.get(position));
             }
@@ -91,7 +93,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
 
 
     public class MyViewHolder extends RecyclerView.ViewHolder  {
-        TextView tvTitle, tvId, tvDes;
+        TextView tvTitle, tvId, tvDes, tvAuthor;
         ImageView imageView;
 
         public MyViewHolder(View itemView) {
@@ -99,6 +101,7 @@ public class HomeListAdapter extends RecyclerView.Adapter<HomeListAdapter.MyView
             tvTitle = (TextView)itemView.findViewById(R.id.titleView);
             tvId = (TextView)itemView.findViewById(R.id.id);
             tvDes = (TextView)itemView.findViewById(R.id.deskripsi);
+            tvAuthor = (TextView)itemView.findViewById(R.id.penulis);
             imageView = (ImageView) itemView.findViewById(R.id.img_row);
 
         }

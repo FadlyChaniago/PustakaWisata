@@ -7,10 +7,12 @@
     android:background="@color/bg_home"
     tools:context=".ui.activity.MainActivity">
 
+
     <RelativeLayout
+        android:id="@+id/relativeLayout"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="100dp"
+        android:layout_height="match_parent"
+        android:layout_marginBottom="40dp"
         app:layout_constraintBottom_toTopOf="@+id/nav"
         app:layout_constraintTop_toTopOf="parent">
 
@@ -19,8 +21,8 @@
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:layout_marginStart="30dp"
-            android:layout_marginTop="20dp"
-            android:layout_marginEnd="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="70dp"
             android:background="@drawable/search_bg"
             android:backgroundTint="@color/bg_item"
             android:textColorHint="@color/white"
@@ -28,11 +30,121 @@
             app:queryHint="Search Here ...."
             app:searchIcon="@drawable/baseline_search_24" />
 
+        <LinearLayout
+            android:id="@+id/sort"
+            android:layout_width="40dp"
+            android:layout_height="40dp"
+            android:layout_marginStart="-60dp"
+            android:layout_marginTop="15dp"
+            android:layout_toEndOf="@+id/searchView"
+            android:background="@color/bg_item"
+            app:layout_constraintEnd_toEndOf="parent">
+
+            <Button
+                android:id="@+id/filterButton"
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_marginStart="5dp"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="5dp"
+                android:layout_marginBottom="5dp"
+                android:background="@drawable/ic_menu"
+                android:gravity="center"
+                android:onClick="showFilterTapped"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/category1"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/searchView"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/allFilter"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:onClick="allFilterTapped"
+                android:text="All"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/kuliner"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:onClick="KulinerFilterTapped"
+                android:text="Kuliner"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/homestay"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:onClick="HomeFilterTapped"
+                android:text="Home"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+        <LinearLayout
+            android:id="@+id/category2"
+            android:layout_width="match_parent"
+            android:layout_height="40dp"
+            android:layout_below="@id/category1"
+            android:layout_marginStart="30dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginEnd="30dp"
+            android:orientation="horizontal">
+
+            <Button
+                android:id="@+id/minuman"
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:onClick="MinumanFilterTapped"
+                android:text="Minuman"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/makanan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:onClick="MakananFilterTapped"
+                android:text="Makanan"
+                app:backgroundTint="@null" />
+
+            <Button
+                android:id="@+id/kerajinan"
+                android:layout_width="0dp"
+                android:layout_height="wrap_content"
+                android:layout_weight="1"
+                android:background="@drawable/btn_bg"
+                android:onClick="KerajinanFilterTapped"
+                android:text="Kerajinan"
+                app:backgroundTint="@null" />
+
+        </LinearLayout>
+
+
         <androidx.recyclerview.widget.RecyclerView
             android:id="@+id/recyclerView"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_below="@+id/searchView"
+            android:layout_below="@+id/category2"
             android:layout_marginStart="20dp"
             android:layout_marginTop="10dp"
             android:layout_marginEnd="20dp"

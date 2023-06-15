@@ -8,13 +8,18 @@ public class PepusModel {
     private String url_image;
     private String desciption;
     private String title;
+    private String category;
+    private String author;
 
-    public PepusModel(String title,String url, String image, String id, String desciption) {
+    public PepusModel(String title,String url, String image, String id,
+                      String desciption,String category, String author) {
         this.title = title;
         this.url = url;
         this.url_image = image;
         this.desciption = desciption;
         this.id = UUID.randomUUID().toString();
+        this.category = category;
+        this.author = author;
     }
     public String getTitle() {
         return title;
@@ -50,5 +55,19 @@ public class PepusModel {
         this.desciption = desciption;
     }
 
+    public String getCategory() {
+        return category;
+    }
 
+    public void setCategory(String category) {
+        this.category = category;
+    }
+
+    public String getAuthor() {
+        return author;
+    }
+
+    public void setAuthor(String author) {
+        this.author = author;
+    }
 }

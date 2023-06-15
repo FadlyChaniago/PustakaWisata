@@ -32,6 +32,7 @@ public class DetailBookActivity extends AppCompatActivity {
         String imgUrl = intent.getStringExtra("img");
         String description = intent.getStringExtra("desc");
         String title = intent.getStringExtra("title");
+        String category = intent.getStringExtra("category");
 
         ImageView imageView = findViewById(R.id.img_view);
 
@@ -92,6 +93,7 @@ public class DetailBookActivity extends AppCompatActivity {
                 intent.putExtra("imgUrl", imgUrl);
                 intent.putExtra("pdfUrl", pdfUrl);
                 intent.putExtra("desc", description);
+                intent.putExtra("category", category);
                 startActivity(intent);
 //                Toast.makeText(DetailBookActivity.this, "Menyimpan Buku", Toast.LENGTH_SHORT).show();
             }

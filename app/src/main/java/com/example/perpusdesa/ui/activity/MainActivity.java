@@ -6,7 +6,10 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.animation.Animation;
 import android.view.animation.AnimationUtils;
+import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.ListView;
 import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
@@ -36,6 +39,13 @@ public class MainActivity extends AppCompatActivity implements HomeListAdapter.I
     private SearchView searchView;
     private ActivityMainBinding binding;
 
+    private ListView listView;
+    private Button filterButton;
+    private LinearLayout filterView1;
+    private LinearLayout filterView2;
+    boolean filterHidden = true;
+    private String selectedFilter = "all";
+
     SharedPreferences sharedPreferences;
     SharedPreferences.Editor editor;
     BottomNavigationView bottomNavigationView;
@@ -44,6 +54,9 @@ public class MainActivity extends AppCompatActivity implements HomeListAdapter.I
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        initWidgets();
+        hideFilter();
 
         sharedPreferences = getSharedPreferences("MyAppName" , MODE_PRIVATE);
         editor = sharedPreferences.edit();
@@ -123,7 +136,14 @@ public class MainActivity extends AppCompatActivity implements HomeListAdapter.I
         viewModel.makeApiCall();
     }
 
+    private void initWidgets() {
+        filterButton = (Button) findViewById(R.id.filterButton);
+        filterView1 = (LinearLayout) findViewById(R.id.category1);
+        filterView2 = (LinearLayout) findViewById(R.id.category2);;
+    }
+
     private void filterList(String text) {
+        selectedFilter = text;
         List<PepusModel> filteredList = new ArrayList<>();
 //        if (pepusModelList != null) { // Periksa apakah pepusModelList tidak null
             for (PepusModel pepusModel : pepusModelList) {
@@ -133,12 +153,67 @@ public class MainActivity extends AppCompatActivity implements HomeListAdapter.I
             }
 //        }
 
-        if (filteredList.isEmpty()) {
+//        if (filteredList.isEmpty()) {
 //            Toast.makeText(this, "no data found", Toast.LENGTH_SHORT).show();
-        } else {
+//        } else {
             adapter.setFilteredList(filteredList);
+//        }
+    }
+    public void allFilterTapped(View view) {
+        selectedFilter = "all";
+
+        adapter.setFilteredList(pepusModelList);
+    }
+
+    public void KulinerFilterTapped(View view)
+    {
+        filterList("kuliner");
+    }
+    public void HomeFilterTapped(View view)
+    {
+        filterList("homestay");
+    }
+    public void MinumanFilterTapped(View view)
+    {
+        filterList("minuman");
+    }
+    public void MakananFilterTapped(View view)
+    {
+        filterList("makanan");
+    }
+    public void KerajinanFilterTapped(View view)
+    {
+        filterList("kerajinan");
+    }
+
+    public void showFilterTapped(View view)
+    {
+        if(filterHidden == true)
+        {
+            filterHidden = false;
+            showFilter();
+        }
+        else
+        {
+            filterHidden = true;
+            hideFilter();
         }
     }
+
+    private void hideFilter()
+    {
+        filterView1.setVisibility(View.GONE);
+        filterView2.setVisibility(View.GONE);
+        filterButton.setText("FILTER");
+    }
+
+    private void showFilter()
+    {
+        filterView1.setVisibility(View.VISIBLE);
+        filterView2.setVisibility(View.VISIBLE);
+        filterButton.setText("HIDE");
+    }
+
 
     @Override
     public void onPerpusClick(PepusModel book) {
