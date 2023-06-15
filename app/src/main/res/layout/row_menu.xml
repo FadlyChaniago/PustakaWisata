@@ -1,0 +1,59 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    app:cardCornerRadius="3dp"
+    app:cardUseCompatPadding="true"
+    android:elevation="3dp"
+    app:cardBackgroundColor="@color/bg_item"
+    android:orientation="vertical">
+
+        <LinearLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="vertical"
+            android:layout_marginEnd="10dp"
+            android:layout_marginStart="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginBottom="10dp">
+                <FrameLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content">
+
+                        <ImageView
+                            android:id="@+id/img_row"
+                            android:layout_width="150dp"
+                            android:layout_height="200dp"
+                            android:scaleType="fitXY"
+                            android:adjustViewBounds="true"/>
+
+                </FrameLayout>
+
+                <TextView
+                    android:id="@+id/id"
+                    android:layout_marginEnd="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:visibility="gone"/>
+
+                <TextView
+                    android:id="@+id/titleView"
+                    android:layout_marginEnd="2dp"
+                    android:layout_marginTop="10dp"
+                    android:text="Cita Rasa Kuliner di Balik Keindahan Labuan Bajo"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textStyle="bold"
+                />
+                <TextView
+                    android:id="@+id/deskripsi"
+                    android:layout_marginEnd="2dp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"/>
+<!--                    android:layout_marginBottom="5dp"-->
+<!--                    />-->
+
+        </LinearLayout>
+
+</androidx.cardview.widget.CardView>
